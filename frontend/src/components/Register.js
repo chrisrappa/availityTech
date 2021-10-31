@@ -2,9 +2,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,6 +10,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { registerUser } from '../actions/userActions';
 
 
 
@@ -29,22 +27,18 @@ export default function Register() {
   const [npiNumber, setNpiNumber] = useState('');
   const [businessAddress, setBusinessAddress] = useState ('');
 
-  const userInfo = useState('');
-
-
   const dispatch = useDispatch();
-  // update state upon form entry
+  // update state upon form entry -- done
   // look up using refs so we aren't refreshing state every time something changes
   // set event data appropriately in the handlesubmit function
-  // set up actions/constants/reducers to send the event data to the API
-  // set up barebones server to capture and store this data
+  // set up actions/constants/reducers to send the event data to the API - psudoCod done
+  // set up barebones server to capture and store this data -- psudoCode done
   // link to mongodb with mongoose so it stores the data
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    userInfo = new FormData(event.currentTarget);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     // eslint-disable-next-line no-console
-    dispatch(userInfo(
+    dispatch(registerUser(
       firstName,
       lastName,
       npiNumber,
@@ -52,11 +46,6 @@ export default function Register() {
       phoneNumber,
       email
     ))
-
-    console.log({
-      email: userInfo.get('email'),
-      password: userInfo.get('password'),
-    });
   };
 
   return (
@@ -136,13 +125,24 @@ export default function Register() {
                   id="businessAddressOne"
                   onChange = {(e) => setBusinessAddress(e.target.value)}
                 />
-                <TextField
+                {/* <TextField
                   fullWidth
                   name="businessAddressTwo"
                   label="(Suite, Unit..)"
                   type="businessAddressTwo"
                   id="businessAddressTwo"
                   onChange = {(e) => setBusinessAddress(businessAddress += e.target.value)}
+                /> */}
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phone"
+                  label="Phone Number (xxx-xxx-xxxx)"
+                  name="phone"
+                  autoComplete="phone"
+                  onChange = {(e) => setPhoneNumber(e.target.value)}
                 />
               </Grid>
             </Grid>

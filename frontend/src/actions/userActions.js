@@ -4,20 +4,22 @@ import {
   USER_REGISTER_FAIL
 } from '../constants/userConstants';
 
-import { useState, useDisptach } from 'react';
 import axios from 'axios';
+import Cookie from 'js-cookie';
 
 
-export const registerUser = (userInfo) => (useState, useDispatch) => {
-  const data = useState(userInfo);
+export const registerUser = (firstName, lastName, npiNumber, businessAddress, phoneNumber, email) => async (dispatch)  => {
+  dispatch({type: USER_REGISTER_REQUEST, payload: (firstName, lastName, npiNumber, businessAddress, phoneNumber, email)})
   try{
-    useDispatch({type: USER_REGISTER_REQUEST, payload: data});
-    axios.post(`/api/users/${userId}`);
+    const {data} = await axios.post('/api/users/register', {firstName, lastName, npiNumber, businessAddress, phoneNumber, email})
+    dispatch({type: USER_REGISTER_SUCCESS, payload: data});
     if(data){
-      useDispatch({type: USER_REGISTER_SUCCESS, payload: data});
+      dispatch({type: USER_REGISTER_SUCCESS, payload: data});
+      Cookie.set('userInfo', JSON.stringify(data));
+      console.log("User successfully registered" + data);
     }
-  } catch {
-    useDispatch({type: USER_REGISTER_FAIL, payload: console.error("Form did not submit")});
+  } catch (error) {
+    dispatch({type: USER_REGISTER_FAIL, payload: error.message});
   }
 
 }

@@ -1,0 +1,25 @@
+{
+  "name": "availity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisrappa/availityTech.git"
+  },
+  "author": "chrisrappa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisrappa/availityTech/issues"
+  },
+  "homepage": "https://github.com/chrisrappa/availityTech#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

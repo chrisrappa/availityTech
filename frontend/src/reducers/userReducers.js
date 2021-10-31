@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
