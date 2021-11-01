@@ -1,3 +1,4 @@
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,8 +19,6 @@ const theme = createTheme();
 
 export default function Register() {
 
-  // set useState variables
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -28,16 +27,9 @@ export default function Register() {
   const [businessAddress, setBusinessAddress] = useState ('');
 
   const dispatch = useDispatch();
-  // update state upon form entry -- done
-  // look up using refs so we aren't refreshing state every time something changes
-  // set event data appropriately in the handlesubmit function
-  // set up actions/constants/reducers to send the event data to the API - psudoCod done
-  // set up barebones server to capture and store this data -- psudoCode done
-  // link to mongodb with mongoose so it stores the data
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line no-console
     dispatch(registerUser(
       firstName,
       lastName,
@@ -77,6 +69,7 @@ export default function Register() {
                   required
                   fullWidth
                   id="firstName"
+                  data-testid = "firstName"
                   label="First Name"
                   autoFocus
                   onChange = {(e) => setFirstName(e.target.value)}
@@ -151,7 +144,6 @@ export default function Register() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              // send data to handleSubmit function?
             >
               Register
             </Button>

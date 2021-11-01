@@ -16,7 +16,7 @@ export const registerUser = (firstName, lastName, npiNumber, businessAddress, ph
     if(data){
       dispatch({type: USER_REGISTER_SUCCESS, payload: data});
       Cookie.set('userInfo', JSON.stringify(data));
-      console.log("User successfully registered" + data);
+      console.log("User successfully registered");
     }
   } catch (error) {
     dispatch({type: USER_REGISTER_FAIL, payload: error.message});

@@ -4,7 +4,7 @@ import {
   USER_REGISTER_FAIL
 } from '../constants/userConstants';
 
-export function userRegisterReducer (state = {}, action){
+export default function userRegisterReducer (state = {}, action){
   switch(action.type){
       case USER_REGISTER_REQUEST:
           return {loading: true};

@@ -1,4 +1,5 @@
-import userRegisterReducer from '../reducers/userReducer';
+import React from 'react';
+import userRegisterReducer from '../src/reducers/userReducers';
 
 const userReducer = userRegisterReducer;
 

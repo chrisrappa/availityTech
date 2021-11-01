@@ -1,7 +1,7 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 
-import { userRegisterReducer } from './reducers/userReducers';
+import userRegisterReducer from '../src/reducers/userReducers';
 
 const userInfo = null;
 
