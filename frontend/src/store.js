@@ -1,14 +1,11 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-
 import userRegisterReducer from '../src/reducers/userReducers';
 
 const userInfo = null;
 
 const initialState = {
-  
   userSignin: { userInfo }
-
 };
 
 const reducer = combineReducers({
